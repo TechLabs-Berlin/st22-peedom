@@ -1,0 +1,15 @@
+{
+  "name": "db-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.3.8"
+  }
+}
