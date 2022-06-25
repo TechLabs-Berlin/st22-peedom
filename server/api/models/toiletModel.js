@@ -14,8 +14,10 @@
         isHandicappedAccessible:{
             type:Boolean
         }
+    },
+    {
+        collection: "Toilet_Locations"
     });
 
 // create and export model
 module.exports = mongoose.model("toiletModel", ToiletSchema);
-
