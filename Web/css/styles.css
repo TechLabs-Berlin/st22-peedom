@@ -1,9 +1,68 @@
-#map {
+html, body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #6DC344;
 }
 
-html, body {
-   height: 100%;
-   margin: 0;
-   padding: 0;
+#title {
+  height: 134px;
+  border-radius: 0% 0% 80px 0%;
+  background: #FFFFFF;
+}
+
+#title .container-fluid {
+  padding-top: 42px;
+  padding-left: 60px;
+}
+
+.logo {
+  margin-right: 49px;
+  width: 44px;
+  height: 44px;
+}
+
+#landig-page .container-fluid {
+  padding: 150px 200px 81px 200px;
+}
+
+.to-map-button {
+  height: 51px;
+  width: 256px;
+}
+
+#landig-page {}
+
+.image-group {
+  margin-bottom: 59px;
+}
+
+.image-group img {
+  padding: 0 17.5px;
+}
+
+/* #carousel-images {
+  display: none;
+}
+
+@media and screen (max-width: 428px) {
+  #carousel-images {
+    display: block;
+  }
+
+  .image-group {
+    display: none;
+  }
+} */
+.text {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20.0288px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+#map {
+  height: 100%;
 }
