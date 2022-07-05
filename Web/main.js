@@ -3,12 +3,12 @@ let map;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: {
-      lat: 52.5220,
-      lng: 13.4133
+      lat: 52.522,
+      lng: 13.4133,
     },
     zoom: 13,
   });
-  getLocation()
+  getLocation();
 }
 
 window.initMap = initMap;
@@ -16,20 +16,20 @@ window.initMap = initMap;
 function getLocation() {
   if (navigator.geolocation) {
     let options = {
-      enableHighAccuracy: true
+      enableHighAccuracy: true,
     };
     navigator.geolocation.watchPosition(showPosition, error, options);
   }
 }
 
 function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
+  console.warn("ERROR(" + err.code + "): " + err.message);
 }
 
 async function showPosition(position) {
   let mapPosition = {
     lat: position.coords.latitude,
-    lng: position.coords.longitude
+    lng: position.coords.longitude,
   };
   map.setCenter(mapPosition);
   new google.maps.Marker({
@@ -41,8 +41,8 @@ async function showPosition(position) {
       scale: 10,
       fillOpacity: 1,
       strokeWeight: 2,
-      fillColor: '#5384ED',
-      strokeColor: '#ffffff',
+      fillColor: "#5384ED",
+      strokeColor: "#ffffff",
     },
   });
 
@@ -55,18 +55,16 @@ async function showPosition(position) {
     let marker = new google.maps.Marker({
       position: {
         lat: +element.Latitude.replace(",", "."),
-        lng: +element.Longitude.replace(",", ".")
+        lng: +element.Longitude.replace(",", "."),
       },
       map,
       title: element.Description,
     });
-    markers.push(marker)
+    markers.push(marker);
   });
-
 
   const markerCluster = new markerClusterer.MarkerClusterer({
     map,
-    markers
+    markers,
   });
-
 }
