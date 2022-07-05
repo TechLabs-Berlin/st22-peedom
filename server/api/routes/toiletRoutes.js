@@ -12,9 +12,15 @@
         .get(toiletList.listAllToilets)
         .post(toiletList.createNewToilet);
 
+// get request for /toilet-result endpoint - selection of toilets
+        app
+        .route("/toilet-result")
+        .get(toiletList.listSomeToilets);
+
 // put and delete request for /toilet endpoints
         app
         .route("/toilet/:id")
         .put(toiletList.updateToilet)
-        .delete(toiletList.deleteToilet);
+        .delete(toiletList.deleteToilet)
+        .get(toiletList.listOneToilet);
     };
