@@ -9,10 +9,6 @@ function initMap() {
     zoom: 13,
   });
   getLocation()
-
-
-
-
 }
 
 window.initMap = initMap;
@@ -30,13 +26,19 @@ function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 }
 
-
-
-function showPosition(position) {
+async function showPosition(position) {
   let mapPosition = {
     lat: position.coords.latitude,
     lng: position.coords.longitude
   };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }
+  fetch("/location", options).then(console.log(response));
   map.setCenter(mapPosition);
   new google.maps.Marker({
     position: mapPosition,
@@ -52,27 +54,27 @@ function showPosition(position) {
     },
   });
 
+  const listToiletEndpoint = new URL("http://localhost:3000/toilet");
+  const response = await fetch(listToiletEndpoint);
+  const toiletList = await response.json();
   let markers = [];
 
-  let marker1 = new google.maps.Marker({
-    position: {
-      lat: 52.51950268923511,
-      lng: 13.257165884213851
-    },
-    map,
-    title: "Random location1!",
+  toiletList.forEach((element) => {
+    let marker = new google.maps.Marker({
+      position: {
+        lat: +element.Latitude.replace(",", "."),
+        lng: +element.Longitude.replace(",", ".")
+      },
+      map,
+      title: element.Description,
+    });
+    markers.push(marker)
+  });
 
-  });
-  markers.push(marker1)
-  let marker2 = new google.maps.Marker({
-    position: {
-      lat: 52.51864746001577,
-      lng: 13.25715515537783
-    },
+
+  const markerCluster = new markerClusterer.MarkerClusterer({
     map,
-    title: "Random location2!",
+    markers
   });
-  markers.push(marker2)
-  const markerCluster = new markerClusterer.MarkerClusterer({ map, markers });
 
 }
