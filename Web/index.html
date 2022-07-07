@@ -20,6 +20,10 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="module" src="main.js"></script>
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0RB9waGD1vb8Z2aKCEZ4ZDRE_glPXC7c&callback=initMap&v=weekly"
+      defer
+    ></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,9 +52,31 @@
       </div>
     </header>
     <div id="map"></div>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0RB9waGD1vb8Z2aKCEZ4ZDRE_glPXC7c&callback=initMap&v=weekly"
-      defer
-    ></script>
+    <div class="map-buttons">
+      <ul>
+        <li><button class="btn">Filter</button></li>
+        <li><button class="btn" onclick="showToiletList()">List</button></li>
+      </ul>
+    </div>
+    <div id="list-wrapper">
+      <!-- <div class="card">
+        <div class="card-horizontal">
+          <div class="img-square-wrapper">
+            <img
+              class=""
+              src="http://via.placeholder.com/300x180"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+        </div>
+      </div> -->
+    </div>
   </body>
 </html>

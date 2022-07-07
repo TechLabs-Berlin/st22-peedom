@@ -93,7 +93,6 @@ nav ul {
 
 .image-text-section {
   padding: 17% 15% 4%;
-  background: rgba(43, 104, 14, 0.47);
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
@@ -108,16 +107,64 @@ nav ul {
   height: 100%;
 }
 
-@media (max-width: 1133px) {
+.map-buttons{
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 2%;
+}
+
+.map-buttons ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.map-buttons button{
+justify-content: center;
+align-items: center;
+width: 145px;
+height: 51px;
+background: var(--green-color);
+border-radius: 29px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+}
+
+#list-wrapper{
+position: absolute;
+z-index: 2;
+top: 27%;
+left: 2%;
+overflow: scroll;
+height: 70%;
+width: 390px;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+
+@media (max-width: 1512px) {
   .wrapper {
-    margin-left: 68px;
-    margin-right: 68px;
+    margin-left: 69px;
+    margin-right: 69px;
   }
+}
+
+@media (max-width: 1133px) {
   header {
     height: 84px;
     width: 100%;
   }
-}
+
+   
 
 @media (max-width: 428px) {
   #carousel-images {
