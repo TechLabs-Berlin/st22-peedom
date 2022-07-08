@@ -2,7 +2,8 @@
 
 // require express and bodyParser
 const  express = require("express");
-const cors = require('cors')
+const cors = require('cors');
+const fs = require("fs");
 const  bodyParser = require("body-parser");
 
 // create express app
@@ -20,7 +21,7 @@ app.use(express.json)
 
 // Add endpoint
 app.get('/', (req, res) => {
-res.send("Hello World");
+res.send(await fs.readFile("st22-peedom\Web\map.html", "utf-8"));
 });
 // Add endpoint for user location
 app.post('/location', (req, res) => {
