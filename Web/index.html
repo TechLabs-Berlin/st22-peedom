@@ -32,6 +32,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@700&display=swap"
       rel="stylesheet"
     />
+    <!-- fontawsome -->
+    <script
+      src="https://kit.fontawesome.com/352ec998af.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -54,29 +59,23 @@
     <div id="map"></div>
     <div class="map-buttons">
       <ul>
-        <li><button class="btn">Filter</button></li>
-        <li><button class="btn" onclick="showToiletList()">List</button></li>
+        <li><button class="btn map-button">Filter</button></li>
+        <li>
+          <button
+            id="list-button"
+            class="btn map-button"
+            onclick="showToiletList()"
+          >
+            List
+            <i
+              id="close-list"
+              class="fa-solid fa-xmark hidden"
+              onclick="closeList()"
+            ></i>
+          </button>
+        </li>
       </ul>
     </div>
-    <div id="list-wrapper">
-      <!-- <div class="card">
-        <div class="card-horizontal">
-          <div class="img-square-wrapper">
-            <img
-              class=""
-              src="http://via.placeholder.com/300x180"
-              alt="Card image cap"
-            />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-          </div>
-        </div>
-      </div> -->
-    </div>
+    <div id="list-wrapper"></div>
   </body>
 </html>

@@ -122,18 +122,39 @@ nav ul {
   gap: 16px;
 }
 
-.map-buttons button{
-justify-content: center;
-align-items: center;
-width: 145px;
-height: 51px;
-background: var(--green-color);
-border-radius: 29px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
+.map-buttons button {
+  justify-content: center;
+  align-items: center;
+  width: 145px;
+  height: 51px;
+  border-radius: 29px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
 }
+
+.map-button {
+  background: var(--green-color);
+}
+
+.map-button:focus,
+.map-button:active,
+.map-button:hover
+ {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.active-icon {
+  color: var(--white-color);
+  padding-left: 10px;
+}
+
 
 #list-wrapper{
 position: absolute;

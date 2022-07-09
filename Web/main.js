@@ -79,7 +79,12 @@ function drawMarkers() {
 }
 
 function showToiletList() {
-  let cardHTML = "";
+  alert("showList");
+  let closeListIcon = document.getElementById("close-list");
+  closeListIcon.classList.remove("hidden");
+  closeListIcon.classList.add("active-icon");
+
+  let cardHTML = "<div id='cards-wrapper'>";
   let numCallbackRuns = 0;
 
   toiletList.forEach((element) => {
@@ -118,6 +123,8 @@ function showToiletList() {
 </div>`;
     numCallbackRuns++;
   });
+
+  cardHTML += "</div>";
   document.getElementById("list-wrapper").innerHTML = cardHTML;
 }
 
@@ -125,5 +132,16 @@ function showToiletDetalis(index) {
   alert(`you clicked on ${toiletList[index].Description}`);
 }
 
+function closeList() {
+  alert("closeList");
+  let closeListIcon = document.getElementById("close-list");
+  closeListIcon.classList.remove("active-icon");
+  closeListIcon.classList.add("hidden");
+
+  let cardsWrapper = document.getElementById("cards-wrapper");
+  cardsWrapper.classList.add("hidden");
+}
+
 window.showToiletList = showToiletList;
 window.showToiletDetalis = showToiletDetalis;
+window.closeList = closeList;
