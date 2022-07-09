@@ -45,8 +45,14 @@ body {
 
 /* fontawesome */
 
-.fa-xmark {
+.fa-xmark,
+.fa-arrow-left {
   color: var(--black-color);
+}
+
+.card-icons {
+  display:flex;
+  justify-content: space-between;
 }
 
 /* Header */
@@ -140,7 +146,8 @@ nav ul {
 
 .map-button:focus,
 .map-button:active,
-.map-button:hover
+.map-button:hover,
+.active-map-button
  {
   background-color: var(--black-color);
   color: var(--white-color);
@@ -161,9 +168,13 @@ position: absolute;
 z-index: 2;
 top: 27%;
 left: 2%;
-overflow: scroll;
 height: 70%;
 width: 390px;
+}
+
+#cards-wrapper {
+  /* overflow: scroll; */
+  height: 100%;
 }
 
 .card-horizontal {
@@ -171,6 +182,65 @@ width: 390px;
   flex: 1 1 auto;
 }
 
+#toilet-details, 
+#toilet-reviews,
+#toilet-add-review {
+  z-index: 50000000;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 580px;
+  padding: 1%;
+}
+
+#toilet-details .fa-xmark,
+#toilet-reviews .fa-xmark,
+#toilet-add-review .fa-xmark {
+  text-align: right;
+}
+
+.badge-pill {
+  color: var(--black-color);
+  border: medium solid var(--black-color);
+  border-radius: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.reviewTextBox {
+  width: 100%;
+}
+
+
+.scrollbar {
+  margin-left: 30px;
+  float: left;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+  direction:rtl;
+  }
+  
+  .scrollbar-primary::-webkit-scrollbar {
+  background-color: #F5F5F5; 
+}
+  
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--green-color) 
+}
+
+.card {
+  direction:ltr;
+}
 
 @media (max-width: 1512px) {
   .wrapper {

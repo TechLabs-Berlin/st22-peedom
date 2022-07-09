@@ -32,6 +32,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <!-- fontawsome -->
     <script
       src="https://kit.fontawesome.com/352ec998af.js"
@@ -57,16 +61,13 @@
       </div>
     </header>
     <div id="map"></div>
+
     <div class="map-buttons">
       <ul>
         <li><button class="btn map-button">Filter</button></li>
         <li>
-          <button
-            id="list-button"
-            class="btn map-button"
-            onclick="showToiletList()"
-          >
-            List
+          <button id="list-button" class="btn map-button">
+            <span onclick="showToiletList()">List</span>
             <i
               id="close-list"
               class="fa-solid fa-xmark hidden"
@@ -76,6 +77,7 @@
         </li>
       </ul>
     </div>
+
     <div id="list-wrapper"></div>
   </body>
 </html>
