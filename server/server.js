@@ -1,35 +1,46 @@
-'use strict'
+"use strict";
 
 // require express and bodyParser
-const  express = require("express");
-const cors = require('cors');
-const  bodyParser = require("body-parser");
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // create express app
-const  app = express();
+const app = express();
 
 // define port to run express app
-const  port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // use bodyParser middleware on express app
-app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static("public"));
+app.use(express.json);
 app.use(cors());
 
 // Add endpoint
-app.get('/', (req, res) => {
-res.send("Hello World");
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+// Add endpoint for user location
+app.post("/location", (req, res) => {
+  console.log(request.body);
+  const data = request.body;
+  response.json({
+    latitude: data.lat,
+    longitutude: data.lng,
+  });
 });
 
 // Listen to server
 app.listen(port, () => {
-
-console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
 });
 
 // Import DB Connection
 require("./config/db");
 
 // Import API route
-var routes = require('./api/routes/toiletRoutes'); //importing route
+var routes = require("./api/routes/toiletRoutes"); //importing route
+const { response } = require("express");
 routes(app);
