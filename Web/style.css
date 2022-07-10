@@ -185,7 +185,7 @@ width: 390px;
 #toilet-details, 
 #toilet-reviews,
 #toilet-add-review {
-  z-index: 50000000;
+  z-index: 5;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -216,7 +216,32 @@ width: 390px;
   width: 100%;
 }
 
+/* Filter */
 
+#filter-wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 2%;
+  height: 50%;
+  width: 390px;
+  background-color: var(--white-color);
+}
+
+#filter-wrapper ul {
+  list-style: none;
+}
+
+#close-filter {
+  float: right;
+}
+
+.active-filter {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+/* scrollbar */
 .scrollbar {
   margin-left: 30px;
   float: left;

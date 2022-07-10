@@ -56,15 +56,26 @@
             </li>
           </ul>
         </nav>
-
-        <!-- End of desktop navigation menu -->
       </div>
     </header>
+    <!-- End of desktop navigation menu -->
+
+    <!-- Map -->
     <div id="map"></div>
 
+    <!-- Map Buttons -->
     <div class="map-buttons">
       <ul>
-        <li><button class="btn map-button">Filter</button></li>
+        <li>
+          <button id="filter-button" class="btn map-button">
+            <span onclick="showFilter()">Filter</span>
+            <i
+              id="reset-filter"
+              class="fa-solid fa-xmark hidden"
+              onclick="resetFilter()"
+            ></i>
+          </button>
+        </li>
         <li>
           <button id="list-button" class="btn map-button">
             <span onclick="showToiletList()">List</span>
@@ -78,6 +89,55 @@
       </ul>
     </div>
 
+    <!-- List -->
     <div id="list-wrapper"></div>
+
+    <!-- Filter -->
+    <div id="filter-wrapper" class="hidden">
+      <div>
+        <i
+          id="close-filter"
+          class="fa-solid fa-xmark"
+          onclick="closeFilter()"
+        ></i>
+      </div>
+
+      <h3>Filter</h3>
+      <ul>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="open24"
+            onclick="addOrRemoveFilter('open24')"
+            >Open 24 hr</span
+          >
+        </li>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="paid"
+            onclick="addOrRemoveFilter('paid')"
+            >Paid</span
+          >
+        </li>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="free"
+            onclick="addOrRemoveFilter('free')"
+            >Free of charge</span
+          >
+        </li>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="accessible"
+            onclick="addOrRemoveFilter('accessible')"
+            >Wheelchair Accessible</span
+          >
+        </li>
+      </ul>
+      <button class="btn map-button" onclick="confirmFilter()">Confirm</button>
+    </div>
   </body>
 </html>

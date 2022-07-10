@@ -1,5 +1,8 @@
 let map;
 let toiletList;
+let appliedFilters = [];
+let unconfirmedFilters = [];
+let userCurrentPosition = {};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -27,10 +30,17 @@ function error(err) {
 
 async function showPosition(position) {
   drawCurrentLocation(position);
+  await callAPIAndUpdateMap("");
+}
 
-  const listToiletEndpoint = new URL("http://localhost:3000/toilet");
+async function callAPIAndUpdateMap(queryParams) {
+  const api = `http://localhost:3000/toilet?lat=${userCurrentPosition.lat}&lng=${userCurrentPosition.lng}${queryParams}`;
+
+  const listToiletEndpoint = new URL(api);
   const response = await fetch(listToiletEndpoint);
   toiletList = await response.json();
+
+  //todo: check if we need to remove all markers and put the updated new ones
   let markers = drawMarkers();
 
   new markerClusterer.MarkerClusterer({
@@ -40,23 +50,16 @@ async function showPosition(position) {
 }
 
 function drawCurrentLocation(position) {
-  let mapPosition = {
+  userCurrentPosition = {
     lat: position.coords.latitude,
     lng: position.coords.longitude,
   };
-  map.setCenter(mapPosition);
+  map.setCenter(userCurrentPosition);
   new google.maps.Marker({
-    position: mapPosition,
+    position: userCurrentPosition,
     map,
     title: "you are here!",
-    icon: {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 10,
-      fillOpacity: 1,
-      strokeWeight: 2,
-      fillColor: "#5384ED",
-      strokeColor: "#ffffff",
-    },
+    icon: "./images/PeedomPeeIcon.svg",
   });
 }
 
@@ -70,10 +73,25 @@ function drawMarkers() {
       },
       map,
       title: element.Description,
+      icon: {
+        url: "./images/PeedomLocationPin.svg",
+      },
     });
     markers.push(marker);
   });
   return markers;
+}
+
+function redirectToGogleMaps(toilet) {
+  let toGoogleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${
+    userCurrentPosition.lat
+  }
+  ,${userCurrentPosition.lng}&destination=${+toilet.Latitude.replace(
+    ",",
+    "."
+  )},${+toilet.Longitude.replace(",", ".")}`;
+
+  window.open(toGoogleMapsUrl, "_blank").focus();
 }
 
 function showToiletList() {
@@ -141,6 +159,9 @@ function showToiletDetalis(toilet) {
       <a href="#" class="btn map-button" onclick='showToiletReviews(${JSON.stringify(
         toilet
       )})'>Show reviews</a>
+      <a href="#" class="btn map-button" onclick='redirectToGogleMaps(${JSON.stringify(
+        toilet
+      )})'>Diection</a>
     </div>
   </div>
   `;
@@ -237,6 +258,97 @@ function goBack(from, to) {
   toElement.classList.remove("hidden");
 }
 
+// Filters
+
+function showFilter() {
+  let filterWrapper = document.getElementById("filter-wrapper");
+  filterWrapper.classList.remove("hidden");
+}
+
+function closeFilter() {
+  unconfirmedFilters.forEach((filter) => {
+    let filterHTML = document.getElementById(filter);
+    if (filterHTML.classList.contains("active-filter")) {
+      filterHTML.classList.remove("active-filter");
+    }
+  });
+
+  appliedFilters.forEach((filter) => {
+    let filterHTML = document.getElementById(filter);
+    if (!filterHTML.classList.contains("active-filter")) {
+      filterHTML.classList.add("active-filter");
+    }
+  });
+
+  unconfirmedFilters = appliedFilters;
+
+  let filterWrapper = document.getElementById("filter-wrapper");
+  filterWrapper.classList.add("hidden");
+}
+
+function addOrRemoveFilter(filterName) {
+  let elementHTML = document.getElementById(filterName);
+
+  if (unconfirmedFilters.includes(filterName)) {
+    unconfirmedFilters = unconfirmedFilters.filter(
+      (name) => name != filterName
+    );
+    elementHTML.classList.remove("active-filter");
+  } else {
+    unconfirmedFilters.push(filterName);
+    elementHTML.classList.add("active-filter");
+  }
+}
+
+function confirmFilter() {
+  appliedFilters = unconfirmedFilters;
+  let queryParams = ``;
+
+  appliedFilters.forEach((element) => {
+    queryParams += `&${element}=true`;
+  });
+
+  callAPIAndUpdateMap(queryParams);
+
+  let filterWrapper = document.getElementById("filter-wrapper");
+  filterWrapper.classList.add("hidden");
+
+  let filterButton = document.getElementById("filter-button");
+  let resetFilterIcon = document.getElementById("reset-filter");
+
+  if (appliedFilters.length != 0) {
+    filterButton.classList.add("active-map-button");
+    resetFilterIcon.classList.remove("hidden");
+    resetFilterIcon.classList.add("active-icon");
+  } else {
+    filterButton.classList.remove("active-map-button");
+    resetFilterIcon.classList.add("hidden");
+    resetFilterIcon.classList.remove("active-icon");
+  }
+}
+
+function resetFilter() {
+  appliedFilters.forEach((filter) => {
+    let filterHTML = document.getElementById(filter);
+    if (filterHTML.classList.contains("active-filter")) {
+      filterHTML.classList.remove("active-filter");
+    }
+  });
+
+  unconfirmedFilters = [];
+  appliedFilters = [];
+
+  let filterButton = document.getElementById("filter-button");
+  let resetFilterIcon = document.getElementById("reset-filter");
+
+  filterButton.classList.remove("active-map-button");
+  filterButton.blur();
+  resetFilterIcon.classList.add("hidden");
+  resetFilterIcon.classList.remove("active-icon");
+
+  callAPIAndUpdateMap("");
+}
+
 window.initMap = initMap;
 window.showToiletList = showToiletList;
 window.showToiletDetalis = showToiletDetalis;
@@ -248,3 +360,9 @@ window.submitReview = submitReview;
 window.showAddReviewCard = showAddReviewCard;
 window.closeAddReviewCard = closeAddReviewCard;
 window.goBack = goBack;
+window.showFilter = showFilter;
+window.closeFilter = closeFilter;
+window.addOrRemoveFilter = addOrRemoveFilter;
+window.confirmFilter = confirmFilter;
+window.resetFilter = resetFilter;
+window.redirectToGogleMaps = redirectToGogleMaps;
