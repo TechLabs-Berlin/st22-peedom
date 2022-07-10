@@ -13,6 +13,25 @@ res.status(200).json(toilet);
 });
 };
 
+exports.listSomeToilets = (req, res) => {
+    Toilet.find({}, (err, toilet) => {
+    if (err) {
+    res.status(500).send(err);
+    }
+    res.status(200).json(toilet);
+    });
+    };
+
+exports.listOneToilet = (req, res) => {
+    Toilet.findById({ _id:req.params.id }, (err, toilet) => {
+    if (err) {
+    res.status(500).send(err);
+    }
+    res.status(200).json(toilet);
+    });
+    };
+    
+
 // createNewToilet function - To create new Toilet
 exports.createNewToilet  = (req, res) => {
 let  newToilet = new Toilet (req.body);
