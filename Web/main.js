@@ -66,6 +66,18 @@ function drawCurrentLocation(position) {
 function drawMarkers() {
   let markers = [];
   toiletList.forEach((element) => {
+    if (element.isOwnedByWall === "Yes") {
+      element.toiletType = "public toilet";
+    } else {
+      element.toiletType = "private toilet";
+    }
+
+    if (element.Price === "0,00") {
+      element.toiletPrice = "Free";
+    } else {
+      element.toiletPrice = `Paid ${element.Price} euro`;
+    }
+
     let marker = new google.maps.Marker({
       position: {
         lat: +element.Latitude.replace(",", "."),
@@ -77,6 +89,11 @@ function drawMarkers() {
         url: "./images/PeedomLocationPin.svg",
       },
     });
+
+    marker.addListener("click", () => {
+      showToiletDetalis(element);
+    });
+
     markers.push(marker);
   });
   return markers;
@@ -105,18 +122,6 @@ function showToiletList() {
   let cardHTML = "<div id='cards-wrapper' class='scrollbar scrollbar-primary'>";
 
   toiletList.forEach((element) => {
-    if (element.isOwnedByWall === "Yes") {
-      element.toiletType = "public toilet";
-    } else {
-      element.toiletType = "private toilet";
-    }
-
-    if (element.Price === "0,00") {
-      element.toiletPrice = "Free";
-    } else {
-      element.toiletPrice = `Paid ${element.Price} euro`;
-    }
-
     cardHTML += `
         <div class="card" onclick='showToiletDetalis(${JSON.stringify(
           element
@@ -145,16 +150,18 @@ function showToiletList() {
 }
 
 function showToiletDetalis(toilet) {
-  document.body.innerHTML += `
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
+
+  toiletDetailsWrapper.innerHTML += `
   <div id="toilet-details" class="card">
     <i class="fa-solid fa-xmark fa-2x" onclick="closeToiletDetails()"></i>
     <img class="card-img-top" src="http://via.placeholder.com/300x180" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">${toilet.Description}</h5>
-      <p class="card-text">${toilet.Street}</p>
+      <p class="card-text">${toilet.address} ${toilet.PostalCode}</p>
       <div>
         <span class="badge badge-pill">${toilet.toiletPrice}</span>
-        <span class="badge badge-pill">${toilet.toiletType}</span>
+        <span class="badge badge-pill">${toilet.timings} hr</span>
       </div>
       <a href="#" class="btn map-button" onclick='showToiletReviews(${JSON.stringify(
         toilet
@@ -171,7 +178,8 @@ function showToiletReviews(toilet) {
   let detailsCard = document.getElementById("toilet-details");
   detailsCard.classList.add("hidden");
 
-  document.body.innerHTML += `
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
+  toiletDetailsWrapper.innerHTML += `
   <div id="toilet-reviews" class="card">
     <div class="card-icons">
       <i class="fa-solid fa-arrow-left fa-2x" onclick='goBack("toilet-reviews", "toilet-details")'></i>
@@ -192,7 +200,8 @@ function showAddReviewCard(id) {
   let reviewsCard = document.getElementById("toilet-reviews");
   reviewsCard.classList.add("hidden");
 
-  document.body.innerHTML += `
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
+  toiletDetailsWrapper.innerHTML += `
   <div id="toilet-add-review" class="card">
     <div class="card-icons">
       <i class="fa-solid fa-arrow-left fa-2x" onclick='goBack("toilet-add-review", "toilet-reviews")'></i>
@@ -233,26 +242,32 @@ function closeList() {
 }
 
 function closeToiletDetails() {
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
   let toiletDetalis = document.getElementById("toilet-details");
-  if (toiletDetalis != null) document.body.removeChild(toiletDetalis);
+  if (toiletDetalis != null) toiletDetailsWrapper.removeChild(toiletDetalis);
 }
 
 function closeToiletReviews() {
   closeToiletDetails();
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
   let toiletReviews = document.getElementById("toilet-reviews");
-  if (toiletReviews != null) document.body.removeChild(toiletReviews);
+  if (toiletReviews != null) toiletDetailsWrapper.removeChild(toiletReviews);
 }
 
 function closeAddReviewCard() {
   closeToiletReviews();
   closeToiletDetails();
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
   let toiletAddReview = document.getElementById("toilet-add-review");
-  if (toiletAddReview != null) document.body.removeChild(toiletAddReview);
+  if (toiletAddReview != null)
+    toiletDetailsWrapper.removeChild(toiletAddReview);
 }
 
 function goBack(from, to) {
+  let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
+
   let fromElement = document.getElementById(from);
-  if (fromElement != null) document.body.removeChild(fromElement);
+  if (fromElement != null) toiletDetailsWrapper.removeChild(fromElement);
 
   let toElement = document.getElementById(to);
   toElement.classList.remove("hidden");
