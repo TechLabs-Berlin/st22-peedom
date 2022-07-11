@@ -1,0 +1,329 @@
+:root {
+  --white-color: #ffffff;
+  --green-color: #75bc54;
+  --black-color: #000000;
+  --gray-color: #d9d9d9;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--green-color);
+}
+
+.wrapper {
+  max-width: 1392px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Button */
+
+.btn {
+  border-radius: 35px;
+  display: inline-block;
+  text-decoration: none;
+  border: 2px solid black;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+/* fontawesome */
+
+.fa-xmark,
+.fa-arrow-left {
+  color: var(--black-color);
+}
+
+.card-icons {
+  display:flex;
+  justify-content: space-between;
+}
+
+/* Header */
+
+header {
+  background-color: var(--white-color);
+  position: absolute;
+  height: 134px;
+  width: 100%;
+  border-radius: 0% 0% 80px 0%;
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 1392px;
+}
+
+nav .logo img {
+  width: 30px;
+  height: 60px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.image-group {
+  display: flex;
+  margin-bottom: 59px;
+}
+
+.image-group img {
+  align-items: center;
+  justify-content: space-between;
+}
+
+#carousel-images {
+  display: none;
+}
+
+.image-text-section {
+  padding: 17% 15% 4%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 142.02%;
+  color: var(--black-color);
+  height: 100%;
+}
+
+/* Map */
+#map {
+  height: 100%;
+}
+
+.map-buttons{
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 2%;
+}
+
+.map-buttons ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.map-buttons button {
+  justify-content: center;
+  align-items: center;
+  width: 145px;
+  height: 51px;
+  border-radius: 29px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.map-button {
+  background: var(--green-color);
+}
+
+.map-button:focus,
+.map-button:active,
+.map-button:hover,
+.active-map-button
+ {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.active-icon {
+  color: var(--white-color);
+  padding-left: 10px;
+}
+
+
+#list-wrapper{
+position: absolute;
+z-index: 2;
+top: 27%;
+left: 2%;
+height: 70%;
+width: 390px;
+}
+
+#cards-wrapper {
+  /* overflow: scroll; */
+  height: 100%;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+#toilet-details, 
+#toilet-reviews,
+#toilet-add-review {
+  z-index: 5;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 580px;
+  padding: 1%;
+}
+
+#toilet-details .fa-xmark,
+#toilet-reviews .fa-xmark,
+#toilet-add-review .fa-xmark {
+  text-align: right;
+}
+
+.badge-pill {
+  color: var(--black-color);
+  border: medium solid var(--black-color);
+  border-radius: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.reviewTextBox {
+  width: 100%;
+}
+
+/* Filter */
+
+#filter-wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 2%;
+  height: 50%;
+  width: 390px;
+  background-color: var(--white-color);
+}
+
+#filter-wrapper ul {
+  list-style: none;
+}
+
+#close-filter {
+  float: right;
+}
+
+.active-filter {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+/* scrollbar */
+.scrollbar {
+  margin-left: 30px;
+  float: left;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+  direction:rtl;
+  }
+  
+  .scrollbar-primary::-webkit-scrollbar {
+  background-color: #F5F5F5; 
+}
+  
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--green-color) 
+}
+
+.card {
+  direction:ltr;
+}
+
+@media (max-width: 1512px) {
+  .wrapper {
+    margin-left: 69px;
+    margin-right: 69px;
+  }
+}
+
+@media (max-width: 1133px) {
+  header {
+    height: 84px;
+    width: 100%;
+  }
+
+   
+
+@media (max-width: 428px) {
+  #carousel-images {
+    display: block;
+  }
+
+  .image-group {
+    display: none;
+  }
+  header {
+    height: 74px;
+    width: 100%;
+  }
+
+  nav .logo img {
+    width: 22px;
+  }
+
+  .image-text-section {
+    padding: 0;
+  }
+
+  .btn {
+    width: 163px;
+    height: 39px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .description-text {
+    padding: 20px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 142.02%;
+  }
+
+  .wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

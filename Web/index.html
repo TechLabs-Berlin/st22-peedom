@@ -1,20 +1,146 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Peedom Map</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-<head>
-  <title>Peedom Map</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="module" src="main.js"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0RB9waGD1vb8Z2aKCEZ4ZDRE_glPXC7c&callback=initMap&v=weekly"
+      defer
+    ></script>
 
-  <link rel="stylesheet" type="text/css" href="css\styles.css" />
-  <script type="module" src="js\index.js"></script>
-  <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-</head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <!-- fontawsome -->
+    <script
+      src="https://kit.fontawesome.com/352ec998af.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
-  <div id="map"></div>
+  <body>
+    <header>
+      <div class="wrapper">
+        <nav>
+          <div class="logo"><img src="images\PeedomLogo.svg" alt="" /></div>
+          <ul>
+            <li>
+              <a href="whatispeedom.html" class="btn default main-button"
+                >What is Peedom?</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- End of desktop navigation menu -->
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0RB9waGD1vb8Z2aKCEZ4ZDRE_glPXC7c&callback=initMap&v=weekly" defer></script>
+    <!-- Map -->
+    <div id="map"></div>
 
-</body>
+    <!-- Map Buttons -->
+    <div class="map-buttons">
+      <ul>
+        <li>
+          <button id="filter-button" class="btn map-button">
+            <span onclick="showFilter()">Filter</span>
+            <i
+              id="reset-filter"
+              class="fa-solid fa-xmark hidden"
+              onclick="resetFilter()"
+            ></i>
+          </button>
+        </li>
+        <li>
+          <button id="list-button" class="btn map-button">
+            <span onclick="showToiletList()">List</span>
+            <i
+              id="close-list"
+              class="fa-solid fa-xmark hidden"
+              onclick="closeList()"
+            ></i>
+          </button>
+        </li>
+      </ul>
+    </div>
 
+    <!-- List -->
+    <div id="list-wrapper"></div>
+
+    <!-- Toilet Details Wrapper  -->
+    <div id="toilet-details-wrapper"></div>
+
+    <!-- Filter -->
+    <div id="filter-wrapper" class="hidden">
+      <div>
+        <i
+          id="close-filter"
+          class="fa-solid fa-xmark"
+          onclick="closeFilter()"
+        ></i>
+      </div>
+
+      <h3>Filter</h3>
+      <ul>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="open24"
+            onclick="addOrRemoveFilter('open24')"
+            >Open 24 hr</span
+          >
+        </li>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="paid"
+            onclick="addOrRemoveFilter('paid')"
+            >Paid</span
+          >
+        </li>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="free"
+            onclick="addOrRemoveFilter('free')"
+            >Free of charge</span
+          >
+        </li>
+        <li>
+          <span
+            class="badge badge-pill"
+            id="accessible"
+            onclick="addOrRemoveFilter('accessible')"
+            >Wheelchair Accessible</span
+          >
+        </li>
+      </ul>
+      <button class="btn map-button" onclick="confirmFilter()">Confirm</button>
+    </div>
+  </body>
 </html>
