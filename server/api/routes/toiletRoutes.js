@@ -14,8 +14,8 @@
 
 // get request for /toilet-result endpoint - selection of toilets
         app
-        .route("/toilet-result")
-        .get(toiletList.listSomeToilets);
+        .route("/toilets-all")
+        .get(toiletList.listAllToilets);
 
 // put and delete request for /toilet endpoints
         app
