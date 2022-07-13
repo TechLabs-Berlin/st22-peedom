@@ -1,6 +1,6 @@
 // import Toilet Model
 const  Toilet = require("../models/toiletModel");
-
+const spawn = require("child_process").spawn;
 // let runPy = new Promise(function(success, nosuccess) {
 
 //     const { spawn } = require('child_process');
@@ -29,7 +29,6 @@ res.status(200).json(toilet);
 };
 
 exports.listSomeToilets = (req, res) => {
-    const spawn = require("child_process").spawn;
     const pythonProcess = spawn('python',["C:\programming1\peedom\st22-peedom\server\pp.py", req.query.lat, req.query.lng]);
     console.log(req.query.lat);
     console.log(req.query.lng);
