@@ -7,10 +7,10 @@
 // toiletList Routes
 
 // get and post request for /toilet endpoints
-        app
-        .route("/toilet")
-        .get(toiletList.listAllToilets)
-        .post(toiletList.createNewToilet);
+        // app
+        // .route("/toilet")
+        // .get(toiletList.listAllToilets)
+        // .post(toiletList.createNewToilet);
 
 // get request for /toilet-result endpoint - selection of toilets
         app

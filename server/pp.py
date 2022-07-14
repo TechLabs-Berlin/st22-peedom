@@ -12,12 +12,12 @@ data = r.json()
 # lat = sys.argv[1]
 # lon = sys.argv[2]
 # print(sys.argv[1])
-print(data) 
-# resp = {
-#     "Response": 200,
-#     "Message": "hello from Python File",
-#     "Data":data
-# }
+resp = {
+    "Response": 200,
+    "Message": "Data from Python File",
+    "Data":data
+}
+print(json.dumps(resp))
 # print(json.dumps(resp))
 # # using system module in python to send to node js 
 sys.stdout.flush()

@@ -47,7 +47,7 @@ app.use(cors());
 // });
 
 // Add endpoint
-app.get('/toilet-selection', (req, res) => {
+app.get('/toilet', (req, res) => {
     let dataTest = ""
     //for (const [key, value] of mySearchParams.entries()) {}
     const spawn = require("child_process").spawn;
@@ -59,7 +59,10 @@ app.get('/toilet-selection', (req, res) => {
     })
     childPython.stdout.on("close", (code) => {
         console.log("Hello");
-        res.status(200).json(dataTest)
+        //convert dataTest to JSON
+        let myData = JSON.parse(dataTest)
+        //extract Data form Object
+        res.status(200).json(myData.Data)
     })
   });
 //   childPython.stdout.on("data", (err, data) => {

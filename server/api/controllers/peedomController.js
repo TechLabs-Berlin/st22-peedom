@@ -1,24 +1,10 @@
 // import Toilet Model
 const  Toilet = require("../models/toiletModel");
-const spawn = require("child_process").spawn;
-// let runPy = new Promise(function(success, nosuccess) {
 
-//     const { spawn } = require('child_process');
-//     const pyprog = spawn('python', ['./../pypy.py']);
-
-//     pyprog.stdout.on('data', function(data) {
-
-//         success(data);
-//     });
-
-//     pyprog.stderr.on('data', (data) => {
-
-//         nosuccess(data);
-//     });
-// });
 // DEFINE CONTROLLER FUNCTIONS
 
 // listToilets function - To list all toilets
+// This is data is used in pp.py
 exports.listAllToilets = (req, res) => {
 Toilet.find({}, (err, toilet) => {
 if (err) {
@@ -26,18 +12,6 @@ res.status(500).send(err);
 }
 res.status(200).json(toilet);
 });
-};
-
-exports.listSomeToilets = (req, res) => {
-    const pythonProcess = spawn('python',["C:\programming1\peedom\st22-peedom\server\pp.py", req.query.lat, req.query.lng]);
-    console.log(req.query.lat);
-    console.log(req.query.lng);
-    pythonProcess.stdout.on('data', (err, data) => {
-        if (err) {
-            res.status(500).send(err);
-        }
-        res.status(200).json(data)
-    });
 };
 
 exports.listOneToilet = (req, res) => {
@@ -79,4 +53,4 @@ return res.status(404).send(err);
 }
 res.status(200).json({ message:"Toilet successfully deleted"});
 });
-};
+}
