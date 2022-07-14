@@ -4,6 +4,7 @@ const  Toilet = require("../models/toiletModel");
 // DEFINE CONTROLLER FUNCTIONS
 
 // listToilets function - To list all toilets
+// This is data is used in pp.py
 exports.listAllToilets = (req, res) => {
 Toilet.find({}, (err, toilet) => {
 if (err) {
@@ -12,15 +13,6 @@ res.status(500).send(err);
 res.status(200).json(toilet);
 });
 };
-
-exports.listSomeToilets = (req, res) => {
-    Toilet.find({}, (err, toilet) => {
-    if (err) {
-    res.status(500).send(err);
-    }
-    res.status(200).json(toilet);
-    });
-    };
 
 exports.listOneToilet = (req, res) => {
     Toilet.findById({ _id:req.params.id }, (err, toilet) => {
@@ -61,4 +53,4 @@ return res.status(404).send(err);
 }
 res.status(200).json({ message:"Toilet successfully deleted"});
 });
-};
+}
