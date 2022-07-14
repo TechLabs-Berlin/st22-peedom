@@ -13,7 +13,6 @@ data = r.json()
 # lon = sys.argv[2]
 # print(sys.argv[1])
 print(data) 
-
 # resp = {
 #     "Response": 200,
 #     "Message": "hello from Python File",

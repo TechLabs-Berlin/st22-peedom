@@ -48,19 +48,38 @@ app.use(cors());
 
 // Add endpoint
 app.get('/toilet-selection', (req, res) => {
+    let dataTest = ""
+    //for (const [key, value] of mySearchParams.entries()) {}
     const spawn = require("child_process").spawn;
-    res.setHeader('Content-Type', 'application/json; charset=utf-8');
     // const childPython = spawn("python", ["../../../server/pp.py", req.query.lat, req.query.lng]);
     const childPython = spawn("python", ["pp.py"]);
-    childPython.stdout.on("data", (err, data) => {
-        if (err) {
-            res.status(500).send(err);
-        }
-        // console.log(`stdout: ${data}`)
-        res.status(200).send(data);
+    childPython.stdout.on("data", (data) => {
+        const dataToSend = data.toString()
+        dataTest += dataToSend
+    })
+    childPython.stdout.on("close", (code) => {
+        console.log("Hello");
+        res.status(200).json(dataTest)
     })
   });
+//   childPython.stdout.on("data", (err, data) => {
+//     console.log(data);
+    // if (data) {
 
+    //     // const dataToSend = data.toString()
+    //     // testData += dataToSend
+    // }
+    // if (err) {
+    //     res.status(500).send(err);
+    //     return
+    // }
+    // console.log("Hello")
+    // res.send(data);
+    // return
+
+// childPython.stdout.on("close", (code) => {
+//     res.send(testData)
+// })
 // Listen to server
 app.listen(port, () => {
 
