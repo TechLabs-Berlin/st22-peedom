@@ -8,13 +8,13 @@ url = "http://localhost:3000/toilets-all"
 r = requests.get(url)
 #inputing all toilets Information into data variable
 data = r.json()
+#parameters as a string are passed to params variable
+#looks like this "lat":"51.7661","lng":"-0.2415","open24":"true","paid":"true"
+params = sys.argv[1]
 
-# lat = sys.argv[1]
-# lon = sys.argv[2]
-# print(sys.argv[1])
 resp = {
     "Response": 200,
-    "Message": "Data from Python File",
+    "Message": params,
     "Data":data
 }
 print(json.dumps(resp))
