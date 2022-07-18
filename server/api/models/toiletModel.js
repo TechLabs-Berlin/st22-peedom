@@ -16,7 +16,7 @@
         }
     },
     {
-        collection: "Toilet_Locations"
+        collection: "Toilets"
     });
 
 // create and export model

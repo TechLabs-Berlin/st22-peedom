@@ -80,8 +80,8 @@ function drawMarkers() {
 
     let marker = new google.maps.Marker({
       position: {
-        lat: +element.Latitude.replace(",", "."),
-        lng: +element.Longitude.replace(",", "."),
+        lat: +element.Latitude,
+        lng: +element.Longitude,
       },
       map,
       title: element.Description,
