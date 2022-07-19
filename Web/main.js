@@ -129,8 +129,8 @@ function showToiletList() {
         <div class="card-horizontal">
           <div class="img-square-wrapper">
             <img
-              class=""
-              src="http://via.placeholder.com/300x180"
+              class="list-image"
+              src="images/toilet1.svg"
               alt="toilet image"
             />
           </div>
@@ -155,20 +155,20 @@ function showToiletDetalis(toilet) {
   toiletDetailsWrapper.innerHTML += `
   <div id="toilet-details" class="card">
     <i class="fa-solid fa-xmark fa-2x" onclick="closeToiletDetails()"></i>
-    <img class="card-img-top" src="http://via.placeholder.com/300x180" alt="Card image cap">
+    <img class="card-img-top" src="images/toilet3.jpg" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">${toilet.Description}</h5>
       <p class="card-text">${toilet.address} ${toilet.PostalCode}</p>
-      <div>
+      <div class="badge-pill-info">
         <span class="badge badge-pill">${toilet.toiletPrice}</span>
         <span class="badge badge-pill">${toilet.timings} hr</span>
       </div>
       <a href="#" class="btn map-button" onclick='showToiletReviews(${JSON.stringify(
         toilet
       )})'>Show reviews</a>
-      <a href="#" class="btn map-button" onclick='redirectToGogleMaps(${JSON.stringify(
+      <a href="#" class="btn map-button show-button" onclick='redirectToGogleMaps(${JSON.stringify(
         toilet
-      )})'>Diection</a>
+      )})'>Directions</a>
     </div>
   </div>
   `;
@@ -188,7 +188,7 @@ function showToiletReviews(toilet) {
     <div class="card-body">
       <h5 class="card-title">Reviews</h5>
       <p class="card-text">${toilet.reviews || "No reviews."}</p>
-      <a href="#" class="btn map-button" onclick='showAddReviewCard(${JSON.stringify(
+      <a href="#" class="btn map-button submit-button" onclick='showAddReviewCard(${JSON.stringify(
         toilet._id
       )})'>Add review</a>
     </div>
@@ -207,10 +207,10 @@ function showAddReviewCard(id) {
       <i class="fa-solid fa-arrow-left fa-2x" onclick='goBack("toilet-add-review", "toilet-reviews")'></i>
       <i class="fa-solid fa-xmark fa-2x" onclick="closeAddReviewCard()"></i>
     </div>
-    <div class="card-body">
+    <div class="card-body ">
       <form id="reviewForm">
         <textarea name="reviewText" class="reviewTextBox"></textarea><br>
-        <input class="btn map-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
+        <input class="btn map-button addReviw-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
           id
         )})' value="Add Review">
       </form>
