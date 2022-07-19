@@ -3,9 +3,7 @@
 // require express and bodyParser
 const  express = require("express");
 const  bodyParser = require("body-parser");
-const fs = require("fs")
 const cors = require("cors")
-const axios = require("axios")
 
 // create express app
 const  app = express();
@@ -19,8 +17,26 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Add endpoint
-app.get('/', (req, res) => {
-  res.send("Hello World");
+app.get('/toilet', (req, res) => {
+    let dataTest = ""
+    // turn query parameters into string that will be passed to pp.py
+    let paramString = JSON.stringify(req.query)
+
+    const spawn = require("child_process").spawn;
+    // const childPython = spawn("python", ["../../../server/pp.py", req.query.lat, req.query.lng]);
+    const childPython = spawn("python", ["pp.py", paramString]);
+    childPython.stdout.on("data", (data) => {
+        const dataToSend = data.toString()
+        dataTest += dataToSend
+    })
+    childPython.stdout.on("close", (code) => {
+        // console.log("Hello");
+        //convert dataTest to JSON
+        let myData = JSON.parse(dataTest)
+        //extract Data form Object
+        console.log(myData.Message);
+        res.status(200).json(myData.Data)
+    })
   });
 
 // Listen to server
