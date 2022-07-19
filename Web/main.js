@@ -30,11 +30,18 @@ function error(err) {
 
 async function showPosition(position) {
   drawCurrentLocation(position);
-  await callAPIAndUpdateMap("");
+
+  let queryParams = ``;
+
+  appliedFilters.forEach((element) => {
+    queryParams += `&${element}=true`;
+  });
+
+  await callAPIAndUpdateMap(queryParams);
 }
 
 async function callAPIAndUpdateMap(queryParams) {
-  const api = `http://localhost:3000/toilet?lat=${userCurrentPosition.lat}&lng=${userCurrentPosition.lng}${queryParams}`;
+  const api = `http://localhost:3000/toilets-all?lat=${userCurrentPosition.lat}&lng=${userCurrentPosition.lng}${queryParams}`;
 
   const listToiletEndpoint = new URL(api);
   const response = await fetch(listToiletEndpoint);
@@ -100,13 +107,8 @@ function drawMarkers() {
 }
 
 function redirectToGogleMaps(toilet) {
-  let toGoogleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${
-    userCurrentPosition.lat
-  }
-  ,${userCurrentPosition.lng}&destination=${+toilet.Latitude.replace(
-    ",",
-    "."
-  )},${+toilet.Longitude.replace(",", ".")}`;
+  let toGoogleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userCurrentPosition.lat}
+  ,${userCurrentPosition.lng}&destination=${toilet.Latitude},${toilet.Longitude}`;
 
   window.open(toGoogleMapsUrl, "_blank").focus();
 }
@@ -158,15 +160,15 @@ function showToiletDetalis(toilet) {
     <img class="card-img-top" src="images/toilet3.jpg" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">${toilet.Description}</h5>
-      <p class="card-text">${toilet.address} ${toilet.PostalCode}</p>
+      <p class="card-text">${toilet.street_address} ${toilet.PostalCode}</p>
       <div class="badge-pill-info">
         <span class="badge badge-pill">${toilet.toiletPrice}</span>
         <span class="badge badge-pill">${toilet.timings} hr</span>
       </div>
-      <a href="#" class="btn map-button" onclick='showToiletReviews(${JSON.stringify(
+      <a href="#" class="btn map-button details-card-button" onclick='showToiletReviews(${JSON.stringify(
         toilet
       )})'>Show reviews</a>
-      <a href="#" class="btn map-button show-button" onclick='redirectToGogleMaps(${JSON.stringify(
+      <a href="#" class="btn map-button details-card-button" onclick='redirectToGogleMaps(${JSON.stringify(
         toilet
       )})'>Directions</a>
     </div>
