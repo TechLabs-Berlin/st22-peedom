@@ -208,7 +208,7 @@ function showAddReviewCard(id) {
       <i class="fa-solid fa-xmark fa-2x" onclick="closeAddReviewCard()"></i>
     </div>
     <div class="card-body">
-      <form id="reviewForm">
+      <form id="reviewForm" action="/toilet/${toilet.id}" method="POST">
         <textarea name="reviewText" class="reviewTextBox"></textarea><br>
         <input class="btn map-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
           id
