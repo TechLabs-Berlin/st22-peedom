@@ -41,7 +41,7 @@ async function showPosition(position) {
 }
 
 async function callAPIAndUpdateMap(queryParams) {
-  const api = `http://localhost:3000/toilets-all?lat=${userCurrentPosition.lat}&lng=${userCurrentPosition.lng}${queryParams}`;
+  const api = `http://localhost:3000/toilet?lat=${userCurrentPosition.lat}&lng=${userCurrentPosition.lng}${queryParams}`;
 
   const listToiletEndpoint = new URL(api);
   const response = await fetch(listToiletEndpoint);
@@ -209,8 +209,8 @@ function showAddReviewCard(id) {
       <i class="fa-solid fa-arrow-left fa-2x" onclick='goBack("toilet-add-review", "toilet-reviews")'></i>
       <i class="fa-solid fa-xmark fa-2x" onclick="closeAddReviewCard()"></i>
     </div>
-    <div class="card-body ">
-      <form id="reviewForm">
+    <div class="card-body">
+      <form id="reviewForm" action="/toilet/${toilet.id}" method="POST">
         <textarea name="reviewText" class="reviewTextBox"></textarea><br>
         <input class="btn map-button addReviw-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
           id

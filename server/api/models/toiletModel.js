@@ -10,9 +10,6 @@
         id:{
             type:Number,
             required:true
-        },
-        isHandicappedAccessible:{
-            type:Boolean
         }
     },
     {
