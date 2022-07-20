@@ -38,9 +38,8 @@ body {
   border: 2px solid black;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 24px;
-  line-height: 29px;
 }
 
 /* fontawesome */
@@ -49,9 +48,8 @@ body {
 .fa-arrow-left {
   color: var(--black-color);
 }
-
 .card-icons {
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -113,14 +111,14 @@ nav ul {
   height: 100%;
 }
 
-.map-buttons{
+.map-buttons {
   position: absolute;
   z-index: 2;
   top: 20%;
   left: 2%;
 }
 
-.map-buttons ul{
+.map-buttons ul {
   display: flex;
   align-items: center;
   list-style: none;
@@ -134,7 +132,7 @@ nav ul {
   width: 145px;
   height: 51px;
   border-radius: 29px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -147,8 +145,7 @@ nav ul {
 .map-button:focus,
 .map-button:active,
 .map-button:hover,
-.active-map-button
- {
+.active-map-button {
   background-color: var(--black-color);
   color: var(--white-color);
 }
@@ -162,19 +159,19 @@ nav ul {
   padding-left: 10px;
 }
 
-
-#list-wrapper{
-position: absolute;
-z-index: 2;
-top: 27%;
-left: 2%;
-height: 70%;
-width: 390px;
+#list-wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 27%;
+  left: 2%;
+  height: 70%;
+  width: 390px;
 }
 
 #cards-wrapper {
   /* overflow: scroll; */
   height: 100%;
+  border-radius: 39px;
 }
 
 .card-horizontal {
@@ -182,38 +179,114 @@ width: 390px;
   flex: 1 1 auto;
 }
 
-#toilet-details, 
+.list-image {
+  width: 130px;
+  height: 100%;
+  object-fit: cover;
+}
+
+#toilet-details h5 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+#toilet-details p {
+  width: 400px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #a19d9d;
+}
+
+#toilet-details,
 #toilet-reviews,
 #toilet-add-review {
   z-index: 5;
   margin: 0;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 580px;
-  padding: 1%;
+  width: 564px;
+  height: 653px;
+  padding: 2%;
+  border-radius: 54px;
 }
 
-#toilet-details .fa-xmark,
-#toilet-reviews .fa-xmark,
-#toilet-add-review .fa-xmark {
+#toilet-details .fa-xmark {
   text-align: right;
+  top: 24px;
+  right: 24px;
 }
 
-.badge-pill {
-  color: var(--black-color);
-  border: medium solid var(--black-color);
-  border-radius: 30px;
-  font-family: 'Inter';
+.card-img-top {
+  width: 94%;
+  height: 48%;
+  margin: auto;
+  border-radius: 29px;
+}
+
+.card-title {
+  font-family: "Inter";
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+.card-text {
+  width: 179.94px;
+  height: 37px;
+  left: 41px;
+  top: 137px;
+
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+
+.badge-pill-info {
+  justify-content: space-between;
+  margin-bottom: 13px;
 }
 
 .reviewTextBox {
-  width: 100%;
+  position: absolute;
+  width: 482px;
+  height: 472px;
+  left: 41px;
+  top: 85px;
+  border: 1px solid #a19d9d;
+  border-radius: 23px;
+}
+
+.addReviw-button {
+  position: absolute;
+  width: 196px;
+  left: calc(50% - 196px / 2);
+  top: 90.17%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.submit-button {
+  position: absolute;
+  width: 196px;
+  left: calc(50% - 196px / 2 + 117.5px);
+  top: 11%;
 }
 
 /* Filter */
@@ -223,17 +296,49 @@ width: 390px;
   z-index: 2;
   top: 20%;
   left: 2%;
-  height: 50%;
+  height: 567px;
   width: 390px;
+  border-radius: 39px;
   background-color: var(--white-color);
+}
+
+.badge-pill {
+  color: var(--black-color);
+  border: medium solid var(--black-color);
+  border-radius: 30px;
+  padding: 12px 27px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 #filter-wrapper ul {
   list-style: none;
 }
 
+#filter-wrapper ul li {
+  padding: 12px 27px;
+}
+
+#filter-wrapper h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7px 39px;
+  margin-top: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
 #close-filter {
+  position: absolute;
   float: right;
+  right: 24px;
+  top: 24px;
 }
 
 .active-filter {
@@ -241,6 +346,18 @@ width: 390px;
   color: var(--white-color);
 }
 
+.confirm-button {
+  position: absolute;
+  width: 245px;
+  height: 39px;
+  left: 51px;
+  top: 430px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
 /* scrollbar */
 .scrollbar {
   margin-left: 30px;
@@ -250,21 +367,21 @@ width: 390px;
   background: #fff;
   overflow-y: scroll;
   margin-bottom: 25px;
-  direction:rtl;
-  }
-  
-  .scrollbar-primary::-webkit-scrollbar {
-  background-color: #F5F5F5; 
+  direction: rtl;
 }
-  
-  .scrollbar-primary::-webkit-scrollbar-thumb {
+
+.scrollbar-primary::-webkit-scrollbar {
+  background-color: #f5f5f5;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: var(--green-color) 
+  background-color: var(--green-color);
 }
 
 .card {
-  direction:ltr;
+  direction: ltr;
 }
 
 @media (max-width: 1512px) {
@@ -277,10 +394,89 @@ width: 390px;
 @media (max-width: 1133px) {
   header {
     height: 84px;
-    width: 100%;
   }
 
-   
+  .main-button {
+    width: 196px;
+    height: 44px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .map-buttons button {
+    width: 123px;
+    height: 46px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  #toilet-details,
+  #toilet-reviews {
+    width: 398px;
+    height: 461px;
+    left: 58%;
+  }
+
+  .card-img-top {
+    width: 90%;
+    height: 42%;
+  }
+
+  #toilet-details h5 {
+    left: 13.45%;
+    right: 59.8%;
+    top: 50.55%;
+    bottom: 43.27%;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  #toilet-details p {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .badge-pill {
+    font-size: 14px;
+    line-height: 17px;
+    padding: 5px 12px;
+  }
+  .details-card-button {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .submit-button {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    width: 173px;
+    left: calc(50% - 173px / 2 + 84.42px);
+    top: 15%;
+  }
+
+  #toilet-add-review {
+    width: 398px;
+    height: 461px;
+    left: 58%;
+  }
+
+  .reviewTextBox {
+    width: 346px;
+    height: 320px;
+    left: 25px;
+    top: 61px;
+  }
+
+  .addReviw-button {
+    top: 87.2%;
+    bottom: 4.12%;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
 
 @media (max-width: 428px) {
   #carousel-images {
@@ -292,11 +488,11 @@ width: 390px;
   }
   header {
     height: 74px;
-    width: 100%;
   }
 
   nav .logo img {
     width: 22px;
+    margin-left: 29px;
   }
 
   .image-text-section {
@@ -325,5 +521,137 @@ width: 390px;
   .wrapper {
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .map-buttons {
+    left: 0;
+    top: 108px;
+  }
+  .map-buttons button {
+    width: 75px;
+    height: 32px;
+    border-radius: 29px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  #filter-wrapper {
+    width: 431px;
+    height: 483px;
+    top: 10%;
+    left: 2px;
+    border-radius: 0% 0% 18% 18%;
+  }
+
+  .confirm-button {
+    margin-left: 10%;
+    width: 245px;
+    height: 38px;
+    margin-top: -56px;
+  }
+  #filter-wrapper ul {
+    margin-left: 30px;
+    padding: 0;
+  }
+
+  .badge-pill {
+    /* height: 36px; */
+    font-size: 10px;
+    line-height: 12px;
+    border-radius: 20px;
+  }
+
+  #filter-wrapper h3 {
+    margin-left: 30px;
+  }
+
+  .card-title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .card-text {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  #list-wrapper {
+    top: 16%;
+    left: -6%;
+  }
+
+  #toilet-details,
+  #toilet-reviews {
+    width: 388px;
+    height: 450px;
+    top: 43%;
+    left: 50%;
+  }
+
+  #toilet-add-review {
+    width: 398px;
+    height: 461px;
+    top: 43%;
+    left: 50%;
+  }
+
+  #toilet-details .fa-xmark {
+    width: 355px;
+  }
+
+  #toilet-reviews .fa-xmark,
+  #toilet-add-review .fa-xmark {
+    width: 47px;
+  }
+
+  .fa-arrow-left {
+    margin-left: 24px;
+  }
+
+  .reviewTextBox {
+    width: 346px;
+    height: 339px;
+    left: 25px;
+    top: 50px;
+  }
+
+  .addReviw-button {
+    width: 196px;
+    left: calc(50% - 196px / 2 - 0.08px);
+    top: 87.2%;
+    bottom: 4.12%;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .submit-button {
+    width: 158.66px;
+    left: calc(50% - 158.66px / 2 + 84.33px);
+    bottom: 70.55%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    top: 13%;
+  }
+
+  #toilet-details h5 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  #toilet-details p {
+    font-size: 14px;
+    line-height: 17px;
+    height: 16px;
   }
 }
