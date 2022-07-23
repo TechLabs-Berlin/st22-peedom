@@ -17,7 +17,6 @@ const  port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(methodOverride("_method"))
 
 // Endpoint that calls DS algorithm and returns results
 app.get("/toilet", (req, res) => {
