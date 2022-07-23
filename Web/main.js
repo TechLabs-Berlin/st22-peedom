@@ -204,7 +204,7 @@ function showToiletReviews(toilet) {
     </div>
     <div class="card-body">
       <h5 class="card-title">Reviews</h5>
-      <p class="card-text">${toilet.reviews || "No reviews."}</p>
+      <p class="card-text">${toilet.Comments || "No reviews."}</p>
       <a href="#" class="btn map-button submit-button" onclick='showAddReviewCard(${JSON.stringify(
         toilet._id
       )})'>Add review</a>
@@ -239,7 +239,6 @@ function showAddReviewCard(id) {
 function submitReview(form, id) {
   let reviewsCard = document.getElementById("toilet-add-review");
   reviewsCard.classList.add("hidden");
-
   // call backend here to add comment
 
   closeAddReviewCard();
