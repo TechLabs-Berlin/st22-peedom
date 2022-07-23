@@ -53,7 +53,7 @@ app.get("/toilet/:id", async (req, res) => {
 // endpoint for review to be added to MongoDB document
 app.post("/toilet/:id", async (req, res) => {
   const { id } = req.params.id
-  const update = { Comments: req.body };
+  const update = req.body
   let toilet = await Toilet.findOneAndUpdate(id, {$push: update}, {
     new: true
   });
