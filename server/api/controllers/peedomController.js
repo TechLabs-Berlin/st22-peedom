@@ -14,15 +14,10 @@ res.status(200).json(toilet);
 });
 };
 
-exports.listOneToilet = (req, res) => {
-    Toilet.findById({ _id:req.params.id }, (err, toilet) => {
-    if (err) {
-    res.status(500).send(err);
-    }
-    res.status(200).json(toilet);
-    });
-    };
-    
+exports.listOneToilet = async (req, res) => {
+    const toilet = await Toilet.findOne({ _id: req.params.id })
+	res.send(toilet)
+    };  
 
 // createNewToilet function - To create new Toilet
 exports.createNewToilet  = (req, res) => {

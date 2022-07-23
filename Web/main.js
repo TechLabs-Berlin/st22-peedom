@@ -3,6 +3,8 @@ let toiletList;
 let appliedFilters = [];
 let unconfirmedFilters = [];
 let userCurrentPosition = {};
+let markersOnMap = [];
+let markersClusters = {};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -13,6 +15,12 @@ function initMap() {
     zoom: 13,
   });
   getLocation();
+  // remove old markers
+  markersOnMap.forEach((marker) => {
+    marker.setMap(null);
+  });
+  markersOnMap = [];
+  markersClusters = {};
 }
 
 function getLocation() {
@@ -47,10 +55,17 @@ async function callAPIAndUpdateMap(queryParams) {
   const response = await fetch(listToiletEndpoint);
   toiletList = await response.json();
 
-  //todo: check if we need to remove all markers and put the updated new ones
-  let markers = drawMarkers();
+  // remove old markers
+  markersOnMap.forEach((marker) => {
+    marker.setMap(null);
+  });
+  markersOnMap = [];
+  markersClusters = {};
 
-  new markerClusterer.MarkerClusterer({
+  let markers = drawMarkers();
+  markersOnMap = markers;
+
+  markersClusters = new markerClusterer.MarkerClusterer({
     map,
     markers,
   });
@@ -189,7 +204,7 @@ function showToiletReviews(toilet) {
     </div>
     <div class="card-body">
       <h5 class="card-title">Reviews</h5>
-      <p class="card-text">${toilet.reviews || "No reviews."}</p>
+      <p class="card-text">${toilet.Comments || "No reviews."}</p>
       <a href="#" class="btn map-button submit-button" onclick='showAddReviewCard(${JSON.stringify(
         toilet._id
       )})'>Add review</a>
@@ -210,7 +225,7 @@ function showAddReviewCard(id) {
       <i class="fa-solid fa-xmark fa-2x" onclick="closeAddReviewCard()"></i>
     </div>
     <div class="card-body">
-      <form id="reviewForm" action="/toilet/${toilet.id}" method="POST">
+      <form id="reviewForm">
         <textarea name="reviewText" class="reviewTextBox"></textarea><br>
         <input class="btn map-button addReviw-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
           id
@@ -224,7 +239,6 @@ function showAddReviewCard(id) {
 function submitReview(form, id) {
   let reviewsCard = document.getElementById("toilet-add-review");
   reviewsCard.classList.add("hidden");
-
   // call backend here to add comment
 
   closeAddReviewCard();

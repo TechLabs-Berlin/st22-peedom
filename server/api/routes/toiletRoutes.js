@@ -4,23 +4,9 @@
     module.exports = function(app) {
         var toiletList = require('../controllers/peedomController');
 
-// toiletList Routes
-
-// get and post request for /toilet endpoints
-        // app
-        // .route("/toilet")
-        // .get(toiletList.listAllToilets)
-        // .post(toiletList.createNewToilet);
-
-// get request for /toilet-result endpoint - selection of toilets
+// toilet-all endpoint is used for the DS algorithm and is returns every entry from MongoDB
         app
         .route("/toilets-all")
         .get(toiletList.listAllToilets);
 
-// put and delete request for /toilet endpoints
-        app
-        .route("/toilet/:id")
-        .put(toiletList.updateToilet)
-        .delete(toiletList.deleteToilet)
-        .get(toiletList.listOneToilet);
     };
