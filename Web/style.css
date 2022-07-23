@@ -259,6 +259,10 @@ nav ul {
   margin-bottom: 13px;
 }
 
+.reviews-list ul {
+  list-style: none;
+}
+
 .reviewTextBox {
   position: absolute;
   width: 482px;

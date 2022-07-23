@@ -195,6 +195,16 @@ function showToiletReviews(toilet) {
   let detailsCard = document.getElementById("toilet-details");
   detailsCard.classList.add("hidden");
 
+  let reviewList = `<ul>`;
+
+  toilet.Comments.forEach((comment) => {
+    if (comment.length != 0) {
+      reviewList += `<li>${comment}</li>`;
+    }
+  });
+
+  reviewList += `</ul>`;
+
   let toiletDetailsWrapper = document.getElementById("toilet-details-wrapper");
   toiletDetailsWrapper.innerHTML += `
   <div id="toilet-reviews" class="card">
@@ -204,7 +214,7 @@ function showToiletReviews(toilet) {
     </div>
     <div class="card-body">
       <h5 class="card-title">Reviews</h5>
-      <p class="card-text">${toilet.Comments || "No reviews."}</p>
+      <div class="reviews-list">${reviewList}</div>
       <a href="#" class="btn map-button submit-button" onclick='showAddReviewCard(${JSON.stringify(
         toilet._id
       )})'>Add review</a>
@@ -239,7 +249,13 @@ function showAddReviewCard(id) {
 function submitReview(form, id) {
   let reviewsCard = document.getElementById("toilet-add-review");
   reviewsCard.classList.add("hidden");
-  // call backend here to add comment
+
+  let data = { Comments: form.reviewText.value };
+  fetch(`http://localhost:3000/toilet/${id}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
   closeAddReviewCard();
 }
