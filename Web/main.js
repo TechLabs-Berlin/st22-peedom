@@ -189,7 +189,7 @@ function showToiletReviews(toilet) {
     </div>
     <div class="card-body">
       <h5 class="card-title">Reviews</h5>
-      <p class="card-text">${toilet.reviews || "No reviews."}</p>
+      <p class="card-text">${toilet.Comments || "No reviews."}</p>
       <a href="#" class="btn map-button submit-button" onclick='showAddReviewCard(${JSON.stringify(
         toilet._id
       )})'>Add review</a>
@@ -210,7 +210,7 @@ function showAddReviewCard(id) {
       <i class="fa-solid fa-xmark fa-2x" onclick="closeAddReviewCard()"></i>
     </div>
     <div class="card-body">
-      <form id="reviewForm" action="/toilet/${toilet.id}" method="POST">
+      <form id="reviewForm" method="POST" action="/toilet/${toilet.id}?_method=PUT">
         <textarea name="reviewText" class="reviewTextBox"></textarea><br>
         <input class="btn map-button addReviw-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
           id
