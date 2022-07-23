@@ -225,7 +225,7 @@ function showAddReviewCard(id) {
       <i class="fa-solid fa-xmark fa-2x" onclick="closeAddReviewCard()"></i>
     </div>
     <div class="card-body">
-      <form id="reviewForm" method="POST" action="/toilet/${toilet.id}?_method=PUT">
+      <form id="reviewForm">
         <textarea name="reviewText" class="reviewTextBox"></textarea><br>
         <input class="btn map-button addReviw-button" type="button" onclick='submitReview(this.form, ${JSON.stringify(
           id
@@ -239,7 +239,6 @@ function showAddReviewCard(id) {
 function submitReview(form, id) {
   let reviewsCard = document.getElementById("toilet-add-review");
   reviewsCard.classList.add("hidden");
-
   // call backend here to add comment
 
   closeAddReviewCard();
