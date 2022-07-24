@@ -135,9 +135,30 @@ The screen creation process started on paper, and then I worked on all the ideas
 
 I faced many challenges during my work on the project. As the only UX in the team, I didn't always know if my work was going in the right direction. Bringing the project to completion is a big personal success for me.
 
+
+![A4 - 1](https://user-images.githubusercontent.com/83392053/180667271-bf9d5856-ae81-496a-8cd0-c99b04466e0f.jpg)
+![A4 - 2](https://user-images.githubusercontent.com/83392053/180667273-40f8a509-503b-4e94-9901-63a9708473c2.jpg)
+![A4 - 3](https://user-images.githubusercontent.com/83392053/180667276-49533465-fdfd-4e38-8b44-73276eade71c.jpg)
+![A4 - 4](https://user-images.githubusercontent.com/83392053/180667278-8c80f620-6122-4e46-ae90-01ee37ecd79a.jpg)
+![CINDY](https://user-images.githubusercontent.com/83392053/180667281-c8d3b7e2-f9cf-414d-baf6-e8fe6617aab4.jpg)
+
+![logopeed](https://user-images.githubusercontent.com/83392053/180667598-52d14e86-c5a3-4fa3-b798-7e68f100596c.png)
+
+![PeedomWireframes](https://user-images.githubusercontent.com/83392053/180667298-6db3a7de-1ddc-4970-939b-8e5caa31b1e0.png)
+
+![Frame 216](https://user-images.githubusercontent.com/83392053/180667286-6f97f872-dde3-4978-aac5-73e36d52f70e.jpg)
+
+![glownyprez](https://user-images.githubusercontent.com/83392053/180667418-f4a88d34-6531-4502-a6d9-2cc6021358ce.jpg)
+
+![mapa prez](https://user-images.githubusercontent.com/83392053/180667295-a22b5c6c-06b2-448b-9367-1cbf1319ab09.jpg)
+
+![wyszukprez](https://user-images.githubusercontent.com/83392053/180667301-a2c28d26-9d34-4418-9104-66ad2f877fd0.jpg)
+
 ### Conclusion
 
 We are very happy with the result of our website. We learnt more working on this project with the team than we ever could have by ourselves. Frequent coordination  of Frontend with UX members and Backend with the Frontend and Data Science members allowed for the project to come to fruition.
+
+
 
 ## [Demo Video](https://www.youtube.com/watch?v=buiBnvV3mys)
 
