@@ -139,10 +139,10 @@ I faced many challenges during my work on the project. As the only UX in the tea
 
 We are very happy with the result of our website. We learnt more working on this project with the team than we ever could have by ourselves. Frequent coordination  of Frontend with UX members and Backend with the Frontend and Data Science members allowed for the project to come to fruition.
 
-## Demo Video
+## [Demo Video](https://www.youtube.com/watch?v=buiBnvV3mys)
 
 
-[![Demo](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Demo")
+
 
 
 
