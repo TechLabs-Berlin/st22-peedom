@@ -50,12 +50,6 @@ app.get("/toilet/:id", async (req, res) => {
 
 })
 
-// Toilet.updateMany(
-//   {},
-//   [{ $set: { Comments: ["Comments:"] } }],
-//   { multi: true }
-// )
-
 // endpoint for review to be added to MongoDB document
 app.post("/toilet/:id", async (req, res) => {
   const { id } = req.params;
