@@ -3,4 +3,5 @@ node_modules/
 .venv
 __pycache__
 .ipynb_checkpoints
-venv
+..venv
+.ipynb_checkpoints
