@@ -17,7 +17,7 @@ def geoloc(lat,lng,open24,free,is_accessible):
         data = data2.loc[data2['Price']=='0,00']
     else:
         data = data2
-
+        
     data['Latitude']=data['Latitude'].astype(np.float64)
     data['Longitude']=data['Longitude'].astype(np.float64)
     # if open24 == "true":

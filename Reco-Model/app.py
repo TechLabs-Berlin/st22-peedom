@@ -17,7 +17,6 @@ def toilet():
     lng1 = args.get('lng')
     timing = args.get('open24')
     cost = args.get('free')
-    print(type(cost),cost)
     if_accessible = args.get('accessible')
     result = geoloc(lat1,lng1,timing,cost,if_accessible)
     return result
