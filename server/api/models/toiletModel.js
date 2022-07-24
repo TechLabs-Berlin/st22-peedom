@@ -10,9 +10,9 @@
         Price:{
             type:String
         },
-        Comments:[{
-            type:String
-        }],
+        Comments:{
+            type:Array, default: void 0
+        },
         City:{
             type:String
         },

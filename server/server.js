@@ -43,21 +43,40 @@ app.get("/toilet", (req, res) => {
 
 // endpoint to get just one toilet based on ID
 app.get("/toilet/:id", async (req, res) => {
-    const { id } = req.params.id
-    console.log(id);
-    const toilet = await Toilet.findOne(id);
-    console.log(toilet);
+    const { id } = req.params;
+    const toilet = await Toilet.findById(id);
+    console.log(JSON.stringify(toilet.Comments));
     res.send(toilet)
 
 })
+
+// Toilet.updateMany(
+//   {},
+//   [{ $set: { Comments: ["Comments:"] } }],
+//   { multi: true }
+// )
+
 // endpoint for review to be added to MongoDB document
 app.post("/toilet/:id", async (req, res) => {
-  const { id } = req.params.id
+  const { id } = req.params;
+  let toilet = await Toilet.findById(id);
+  // because Data initially is saved as an empty string (though it is an object in Mongo)
+  // I first test to see if this toilet has the initial empty string
+  if (JSON.stringify(toilet.Comments) == '[""]') {
   const update = req.body
-  let toilet = await Toilet.findOneAndUpdate(id, {$push: update}, {
+  const toilet = await Toilet.findByIdAndUpdate(id, update, {
     new: true
-  });
-  res.send(toilet)
+  })
+  res.send(toilet)}
+  // if toilet already has a comment this else function will be applied
+  // $push only works on arrays
+  else {
+  const update = req.body
+  const toilet = await Toilet.findByIdAndUpdate(id, { $push: update, 
+    new: true
+  })
+  res.send(toilet)}
+  
 })
 
 
