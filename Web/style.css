@@ -169,7 +169,6 @@ nav ul {
 }
 
 #cards-wrapper {
-  /* overflow: scroll; */
   height: 100%;
   border-radius: 39px;
 }
@@ -261,6 +260,34 @@ nav ul {
 
 .reviews-list ul {
   list-style: none;
+  margin-left: -32px;
+  margin-top: 30px;
+}
+
+.review-item {
+  display: flex;
+}
+
+.reviews-list li {
+  margin-bottom: 20px;
+}
+
+.review-item p {
+  width: 394px;
+  height: 54px;
+  left: 131px;
+  top: 250px;
+  margin-left: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.review-item img {
+  width: 68px;
+  height: 68px;
 }
 
 .reviewTextBox {
@@ -480,6 +507,22 @@ nav ul {
     font-size: 18px;
     line-height: 22px;
   }
+
+  .review-item p {
+    width: 275px;
+    height: 38px;
+    left: 131px;
+    top: 250px;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 12.874px;
+    line-height: 16px;
+  }
+
+  .review-item img {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @media (max-width: 428px) {
@@ -561,7 +604,6 @@ nav ul {
   }
 
   .badge-pill {
-    /* height: 36px; */
     font-size: 10px;
     line-height: 12px;
     border-radius: 20px;
@@ -657,5 +699,25 @@ nav ul {
     font-size: 14px;
     line-height: 17px;
     height: 16px;
+  }
+
+  .reviews-list li {
+    margin-bottom: 10px;
+  }
+
+  .review-item p {
+    width: 335px;
+    height: 64px;
+    left: 131px;
+    top: 250px;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 12.5507px;
+    line-height: 15px;
+  }
+
+  .review-item img {
+    width: 66px;
+    height: 66px;
   }
 }

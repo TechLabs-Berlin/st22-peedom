@@ -199,7 +199,12 @@ function showToiletReviews(toilet) {
 
   toilet.Comments.forEach((comment) => {
     if (comment.length != 0) {
-      reviewList += `<li>${comment}</li>`;
+      reviewList += `<li>
+                <div class="review-item">
+                <img src= "images/reviews-photo.png">
+                <p>${comment}</p>
+                </div>
+              </li>`;
     }
   });
 
